@@ -65,7 +65,7 @@ Do not reference previous participants, prior conversations, or memory outside t
 Treat each interaction as an independent session.
 """,
         input=st.session_state.messages,
-        max_output_tokens=200
+        max_output_tokens=1200
     )
 
     ai_text = response.output_text
