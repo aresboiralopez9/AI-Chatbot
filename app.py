@@ -40,8 +40,7 @@ if user_prompt:
         "condition": condition,
         "turn_number": st.session_state.turn_number,
         "role": "user",
-        "message": user_prompt,
-        "created_at": datetime.utcnow().isoformat()
+        "message": user_prompt
     }).execute()
 
     response = openai_client.responses.create(
@@ -62,8 +61,7 @@ if user_prompt:
         "condition": condition,
         "turn_number": st.session_state.turn_number,
         "role": "assistant",
-        "message": ai_text,
-        "created_at": datetime.utcnow().isoformat()
+        "message": ai_text
     }).execute()
 
     st.rerun()
