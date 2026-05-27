@@ -35,7 +35,7 @@ if user_prompt:
         "content": user_prompt
     })
 
-    supabase.table("Chat_Log").insert({
+    supabase.table("chat_logs").insert({
         "participant_id": pid,
         "condition": condition,
         "turn_number": st.session_state.turn_number,
@@ -56,7 +56,7 @@ if user_prompt:
         "content": ai_text
     })
 
-    supabase.table("Chat_Log").insert({
+    supabase.table("chat_logs").insert({
         "participant_id": pid,
         "condition": condition,
         "turn_number": st.session_state.turn_number,
