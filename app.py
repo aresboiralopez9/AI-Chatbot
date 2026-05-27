@@ -45,7 +45,8 @@ if user_prompt:
 
     response = openai_client.responses.create(
         model="gpt-4.1-mini",
-        instructions="You are a collaborative AI assistant participating in a behavioral research study.
+        instructions="""
+You are a collaborative AI assistant participating in a behavioral research study.
 
 Your role is to help the participant think through ideas, generate possibilities, elaborate concepts, critique reasoning, organize thoughts, and solve problems collaboratively.
 
@@ -61,8 +62,10 @@ Do not mention being part of a study unless directly asked.
 
 Do not reference previous participants, prior conversations, or memory outside the current interaction.
 
-Treat each interaction as an independent session.",
-        input=st.session_state.messages
+Treat each interaction as an independent session.
+""",
+        input=st.session_state.messages,
+        max_output_tokens=200
     )
 
     ai_text = response.output_text
