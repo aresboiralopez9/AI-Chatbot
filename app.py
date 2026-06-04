@@ -37,6 +37,7 @@ if user_prompt:
     })
 
     supabase.table("chat_logs").insert({
+        "survey_id": survey_id,
         "participant_id": pid,
         "condition": condition,
         "turn_number": st.session_state.turn_number,
@@ -77,6 +78,7 @@ Treat each interaction as an independent session.
     })
 
     supabase.table("chat_logs").insert({
+        "survey_id": survey_id,
         "participant_id": pid,
         "condition": condition,
         "turn_number": st.session_state.turn_number,
