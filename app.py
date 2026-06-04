@@ -12,8 +12,6 @@ supabase = create_client(
 pid = st.query_params.get("pid", "missing")
 condition = st.query_params.get("condition", "default")
 survey_id = st.query_params.get("survey_id", "missing_survey")
-st.write("Survey:", survey_id)
-st.write("PID:", pid)
 
 if "pid" not in st.session_state or st.session_state.pid != pid:
     st.session_state.pid = pid
