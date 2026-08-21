@@ -3,7 +3,15 @@ from openai import OpenAI
 from supabase import create_client
 from datetime import datetime
 
+# Require access through an authorized Qualtrics survey
+access_token = st.query_params.get("access_token", "")
+
+if access_token != st.secrets["QUALTRICS_ACCESS_TOKEN"]:
+    st.error("Unauthorized access. Please access this application through the research survey.")
+    st.stop()
+
 openai_client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
 supabase = create_client(
     st.secrets["SUPABASE_URL"],
     st.secrets["SUPABASE_KEY"]
