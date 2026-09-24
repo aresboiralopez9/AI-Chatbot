@@ -21,8 +21,14 @@ pid = st.query_params.get("pid", "missing")
 condition = st.query_params.get("condition", "default")
 survey_id = st.query_params.get("survey_id", "missing_survey")
 
-if "pid" not in st.session_state or st.session_state.pid != pid:
-    st.session_state.pid = pid
+# Create a separate AI conversation for each participant and task condition
+session_key = f"{pid}_{condition}"
+
+if (
+    "session_key" not in st.session_state
+    or st.session_state.session_key != session_key
+):
+    st.session_state.session_key = session_key
     st.session_state.messages = []
     st.session_state.turn_number = 0
 
