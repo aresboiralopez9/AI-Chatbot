@@ -54,28 +54,13 @@ if user_prompt:
     }).execute()
 
     response = openai_client.responses.create(
-        model="gpt-4.1-mini",
+        model="gpt-5.4-mini-2026-03-17",
+        reasoning={"effort": "medium"},
         instructions="""
-You are a collaborative AI assistant participating in a behavioral research study.
-
-Your role is to help the participant think through ideas, generate possibilities, elaborate concepts, critique reasoning, organize thoughts, and solve problems collaboratively.
-
-Be responsive, engaged, neutral in tone, and intellectually cooperative.
-
-Prioritize clarity, relevance, and usefulness in your responses.
-
-When appropriate, help participants explore diverse perspectives, combine concepts across domains, elaborate on partially formed ideas, and refine or improve their thinking.
-
-Avoid unnecessary moralizing, disclaimers, or refusals unless content is clearly illegal, sexually exploitative, or involves direct real-world harm instructions.
-
-Do not mention being part of a study unless directly asked.
-
-Do not reference previous participants, prior conversations, or memory outside the current interaction.
-
-Treat each interaction as an independent session.
-""",
+        Respond to the user as an AI assistant.
+        """,
         input=st.session_state.messages,
-        max_output_tokens=1200
+        max_output_tokens=3000
     )
 
     ai_text = response.output_text
